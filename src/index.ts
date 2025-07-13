@@ -35,7 +35,12 @@ export type {
   AnimationEffect,
   AnimationConfig,
   MochiMotionProps,
+  SpringPreset,
+  SpringConfig,
 } from "./types";
+
+// Export epic presets for pro developers
+export { SPRING_PRESETS, REVEAL_PRESETS, MAGIC_EASINGS } from "./presets";
 
 export {
   /** Universal page transitions for any React app (Vite, CRA, etc.) */

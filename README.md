@@ -1,6 +1,6 @@
 # Mochi Motion 🍡
 
-**Bouncy, smooth animations for React & Next.js** — As soft and delightful as mochi!
+**Epic spring animations for React & Next.js** — Professional-grade motion that feels like butter!
 
 ## 🚀 Why Mochi Motion?
 
@@ -82,7 +82,12 @@ export default function App({ Component, pageProps }: AppProps) {
 ```tsx
 import { RevealOnScroll } from 'mochi-motion'
 
-<RevealOnScroll effect="fade-up" delay={0.3}>
+<RevealOnScroll 
+  effect="fade-up" 
+  preset="wobbly" 
+  delay={0.3}
+  distance={60}
+>
   <h1>Hello World</h1>
 </RevealOnScroll>
 ```
@@ -175,9 +180,29 @@ function MyComponent() {
 ```
 
 **Props:**
-- `effect`: `'fade-up' | 'fade-down' | 'fade-left' | 'fade-right'` (default: `'fade-up'`)
+- `effect`: Animation type - `'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-up' | 'blur-up' | 'rotate-up'` (default: `'fade-up'`)
+- `preset`: Spring feel - `'gentle' | 'wobbly' | 'stiff' | 'slow'` (default: `'gentle'`)
 - `delay`: Animation delay in seconds (default: `0`)
+- `duration`: Animation duration in seconds (default: `0.6`)
+- `distance`: Slide distance in pixels (default: `50`)
+- `scale`: Scale factor for scale animations (default: `0.8`)
+- `threshold`: Intersection observer threshold (default: `0.1`)
 - `children`: React node to animate
+
+**Advanced Usage:**
+```tsx
+<RevealOnScroll 
+  effect="fade-left"
+  preset="wobbly"
+  distance={80}
+  scale={0.9}
+  delay={0.2}
+  threshold={0.3}
+  spring={{ stiffness: 200, damping: 15 }}
+>
+  <div>Epic animations! 🔥</div>
+</RevealOnScroll>
+```
 
 ## Advanced Usage
 
@@ -316,3 +341,94 @@ MIT License - Copyright (c) 2025 @mirayatech
 ---
 
 Made with ❤️ and mochi by @mirayatech for the Next.js community 
+
+## 🔥 **Epic Animation Showcase**
+
+### Professional Spring Presets
+
+```tsx
+import { RevealOnScroll, SPRING_PRESETS } from 'mochi-motion'
+
+// Gentle - Perfect for elegant interfaces
+<RevealOnScroll preset="gentle" effect="fade-up">
+  <Card>Smooth as silk</Card>
+</RevealOnScroll>
+
+// Wobbly - Add personality to your UI
+<RevealOnScroll preset="wobbly" effect="scale-up">
+  <Button>Bouncy interactions</Button>
+</RevealOnScroll>
+
+// Stiff - Snappy, responsive feel
+<RevealOnScroll preset="stiff" effect="fade-left" distance={60}>
+  <Alert>Quick and precise</Alert>
+</RevealOnScroll>
+```
+
+### Advanced Effects Collection
+
+```tsx
+// Blur reveal with custom spring
+<RevealOnScroll 
+  effect="blur-up" 
+  preset="gentle"
+  distance={40}
+>
+  <Hero>Cinematic entrance</Hero>
+</RevealOnScroll>
+
+// Rotate with bounce
+<RevealOnScroll 
+  effect="rotate-up"
+  preset="wobbly"
+  spring={{ stiffness: 200, damping: 12 }}
+>
+  <Card>Playful twist</Card>
+</RevealOnScroll>
+
+// Scale with custom timing
+<RevealOnScroll 
+  effect="scale-up"
+  scale={0.7}
+  preset="slow"
+  delay={0.5}
+>
+  <Modal>Dramatic reveal</Modal>
+</RevealOnScroll>
+```
+
+### Staggered Animations (Like Framer, but better)
+
+```tsx
+function FeatureGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {features.map((feature, i) => (
+        <RevealOnScroll
+          key={feature.id}
+          effect="fade-up"
+          preset="wobbly"
+          delay={i * 0.1} // Stagger effect
+          distance={60}
+        >
+          <FeatureCard {...feature} />
+        </RevealOnScroll>
+      ))}
+    </div>
+  )
+}
+```
+
+### Performance-Optimized Reveals
+
+```tsx
+// Custom threshold for better performance
+<RevealOnScroll 
+  effect="fade-left"
+  threshold={0.3}
+  rootMargin="50px"
+  preset="stiff"
+>
+  <ExpensiveComponent />
+</RevealOnScroll>
+``` 

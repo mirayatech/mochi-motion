@@ -1,7 +1,7 @@
 {
   "name": "mochi-motion",
-  "version": "1.0.0",
-  "description": "🍡 Bouncy, smooth animations for React & Next.js - as soft as mochi!",
+  "version": "1.1.0",
+  "description": "🍡 Epic spring animations for React & Next.js - Professional-grade motion that feels like butter!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

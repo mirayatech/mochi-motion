@@ -9,6 +9,16 @@ interface ReactTransitionProps {
   children: React.ReactNode;
   /** Additional CSS classes to apply */
   className?: string;
+  /**
+   * Animation preset for different feels
+   * @default "gentle"
+   */
+  preset?: "gentle" | "wobbly" | "stiff" | "slow";
+  /**
+   * Animation duration in seconds
+   * @default 0.4
+   */
+  duration?: number;
 }
 
 /**
@@ -35,16 +45,45 @@ interface ReactTransitionProps {
 export const ReactTransition: React.FC<ReactTransitionProps> = ({
   children,
   className = "",
+  preset = "gentle",
+  duration = 0.4,
 }) => {
+  // Professional spring presets
+  const springPresets = {
+    gentle: { stiffness: 120, damping: 20, mass: 1 },
+    wobbly: { stiffness: 180, damping: 12, mass: 1 },
+    stiff: { stiffness: 250, damping: 25, mass: 1 },
+    slow: { stiffness: 80, damping: 18, mass: 1.2 },
+  };
+
   return (
     <motion.div
       className={`react-transition ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      initial={{
+        opacity: 0,
+        y: 30,
+        scale: 0.95,
+        filter: "blur(10px)",
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+      }}
+      exit={{
+        opacity: 0,
+        y: -30,
+        scale: 0.95,
+        filter: "blur(5px)",
+      }}
       transition={{
-        duration: 0.4,
-        ease: "easeOut",
+        type: "spring",
+        ...springPresets[preset],
+        duration,
+      }}
+      style={{
+        willChange: "transform, opacity, filter",
       }}
     >
       {children}
