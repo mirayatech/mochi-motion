@@ -1,6 +1,6 @@
 # Mochi Motion 🍡
 
-**Bouncy, smooth animations for Next.js** — As soft and delightful as mochi!
+**Bouncy, smooth animations for React & Next.js** — As soft and delightful as mochi!
 
 ## 🚀 Why Mochi Motion?
 
@@ -19,7 +19,26 @@ npm install mochi-motion framer-motion react-intersection-observer
 
 ## Quick Start
 
-### App Router (Next.js 13+)
+### React/Vite/CRA (Universal)
+
+```tsx
+// For any React app (Vite, Create React App, etc.)
+import { ReactTransition, RevealOnScroll } from 'mochi-motion'
+
+function App() {
+  return (
+    <ReactTransition>
+      <div>
+        <RevealOnScroll effect="fade-up">
+          <h1>Hello Mochi World!</h1>
+        </RevealOnScroll>
+      </div>
+    </ReactTransition>
+  )
+}
+```
+
+### Next.js App Router (13+)
 
 ```tsx
 // app/layout.tsx
@@ -70,7 +89,28 @@ import { RevealOnScroll } from 'mochi-motion'
 
 ## Components
 
-### AppRouterTransition (Recommended for App Router)
+### ReactTransition (Recommended for React/Vite)
+
+Perfect for any React app (Vite, Create React App, etc.). Zero dependencies on Next.js.
+
+```tsx
+// For Vite, CRA, or any React app  
+import { ReactTransition } from 'mochi-motion'
+
+function App() {
+  return (
+    <ReactTransition>
+      <YourAppContent />
+    </ReactTransition>
+  )
+}
+```
+
+**Props:**
+- `children`: React node to animate
+- `className`: Additional CSS classes
+
+### AppRouterTransition (Recommended for Next.js App Router)
 
 Perfect for Next.js 13+ App Router. Provides smooth page transitions without router events.
 
@@ -261,7 +301,11 @@ import { RevealOnScroll, AppRouterTransition } from 'mochi-motion'
 
 ## Requirements
 
+### For React/Vite/CRA:
 - React 17.0.0 or higher
+- Framer Motion 10.0.0 or higher
+
+### For Next.js:
 - Next.js 13.0.0 or higher (App Router) or Next.js 12.0.0+ (Pages Router)
 - Framer Motion 10.0.0 or higher
 
