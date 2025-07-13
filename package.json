@@ -1,7 +1,7 @@
 {
-  "name": "motion-kit",
+  "name": "mochi-motion",
   "version": "1.0.0",
-  "description": "A UI motion system with plug-and-play animations for Next.js",
+  "description": "🍡 Bouncy, smooth animations for Next.js - as soft as mochi!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
