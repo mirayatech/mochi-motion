@@ -1,22 +1,38 @@
 {
   "name": "motion-kit",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A UI motion system with plug-and-play animations for Next.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "react",
+    "nextjs",
+    "framer-motion",
+    "animations",
+    "ui",
+    "motion"
+  ],
+  "author": "@mirayatech",
+  "license": "MIT",
+  "peerDependencies": {
+    "framer-motion": "^10.18.0",
+    "next": ">=13.0.0",
+    "react": ">=17.0.0"
+  },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
-    "framer-motion": "^12.23.3",
-    "next": "^15.3.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-intersection-observer": "^9.16.0"
   }
 }
