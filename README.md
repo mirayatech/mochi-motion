@@ -1,7 +1,7 @@
 <img width="1800" height="1200" alt="IMG_0349" src="https://github.com/user-attachments/assets/d9e5a102-e3ae-455f-9a57-95fa8c13fe92" />
 
 
-# Mochi Motion
+# 🍡 Mochi Motion
 
 **Professional spring animations for React & Next.js that feel like butter.**
 
@@ -9,7 +9,7 @@ Mochi Motion brings world-class animation to your React applications with zero c
 
 <br/>
 
-## Why Mochi Motion?
+## ✨ Why Mochi Motion?
 
 **It just works.** Drop it in your React or Next.js app and get beautiful animations instantly. No complex configuration, no performance headaches, no framework lock-in.
 
@@ -21,7 +21,7 @@ Mochi Motion brings world-class animation to your React applications with zero c
 
 <br/>
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install mochi-motion framer-motion react-intersection-observer
@@ -31,7 +31,7 @@ That's it. No additional setup required.
 
 <br/>
 
-## Quick Start
+## 🚀 Quick Start
 
 ### React (Vite, CRA, or any React app)
 
@@ -85,7 +85,7 @@ export default function App({ Component, pageProps }) {
 
 <br/>
 
-## Animation Effects
+## 🎬 Animation Effects
 
 Mochi Motion includes eight carefully crafted animation effects. Each one uses professional spring physics that respond naturally to user interaction.
 
@@ -111,7 +111,7 @@ Mochi Motion includes eight carefully crafted animation effects. Each one uses p
 
 <br/>
 
-## Spring Physics
+## ⚙️ Spring Physics
 
 The magic happens in the spring configurations. We've spent months tuning these presets to feel just right in real applications.
 
@@ -149,7 +149,7 @@ Deliberate and thoughtful. Commands attention for important content.
 
 <br/>
 
-## Advanced Usage
+## 🔥 Advanced Usage
 
 ### Custom Spring Physics
 
@@ -207,7 +207,7 @@ Fine-tune when animations trigger:
 
 <br/>
 
-## TypeScript Support
+## 💙 TypeScript Support
 
 Mochi Motion is written in TypeScript with comprehensive type definitions. Everything is fully typed for the best developer experience.
 
@@ -272,7 +272,7 @@ function TypedComponent() {
 
 <br/>
 
-## Real-World Examples
+## 🌍 Real-World Examples
 
 ### Landing Page Hero
 
@@ -356,7 +356,7 @@ function Testimonials() {
 
 <br/>
 
-## Migration Guide
+## 🔄 Migration Guide
 
 ### From Pages Router to App Router
 
@@ -394,7 +394,7 @@ export default function RootLayout({ children }) {
 
 <br/>
 
-## Performance Notes
+## ⚡ Performance Notes
 
 Mochi Motion is built for production. Here's what we've optimized:
 
@@ -411,7 +411,7 @@ Mochi Motion is built for production. Here's what we've optimized:
 
 <br/>
 
-## Browser Support
+## 🌐 Browser Support
 
 Mochi Motion works in all modern browsers:
 - **Chrome/Edge**: 88+
@@ -422,7 +422,7 @@ Mochi Motion works in all modern browsers:
 
 <br/>
 
-## API Reference
+## 📖 API Reference
 
 ### RevealOnScroll
 
@@ -454,12 +454,12 @@ All transition components accept:
 
 <br/>
 
-## Contributing
+## 🤝 Contributing
 
 Mochi Motion is open source and welcomes contributions. Found a bug or have a feature request? [Open an issue](https://github.com/mirayatech/mochi-motion/issues).
 
 <br/>
 
-## License
+## 📄 License
 
 MIT License © 2025 [@mirayatech](https://github.com/mirayatech)
