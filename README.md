@@ -1,3 +1,6 @@
+<img width="1800" height="1200" alt="IMG_0349" src="https://github.com/user-attachments/assets/d9e5a102-e3ae-455f-9a57-95fa8c13fe92" />
+
+
 # Mochi Motion
 
 **Professional spring animations for React & Next.js that feel like butter.**
