@@ -308,21 +308,215 @@ export default function RootLayout({ children }) {
 }
 ```
 
-## TypeScript Support
+## 🎯 Complete TypeScript Support
 
-Motion Kit is built with TypeScript and includes full type definitions:
+Mochi Motion is built with TypeScript and includes comprehensive type definitions for maximum developer experience:
+
+### Core Animation Types
 
 ```tsx
-import { RevealOnScroll, AppRouterTransition } from 'mochi-motion'
+// Animation effect types with full IntelliSense
+type AnimationEffect = 
+  | 'fade-up' 
+  | 'fade-down' 
+  | 'fade-left' 
+  | 'fade-right'
+  | 'scale-up' 
+  | 'scale-down' 
+  | 'blur-up' 
+  | 'rotate-up'
 
-// All props are fully typed
+// Spring preset configurations
+type SpringPreset = 'gentle' | 'wobbly' | 'stiff' | 'slow' | 'custom'
+
+// Custom spring physics configuration
+interface SpringConfig {
+  stiffness: number  // 80-300 (default: 100)
+  damping: number    // 8-30 (default: 20) 
+  mass: number       // 0.8-1.5 (default: 1)
+}
+```
+
+### Complete Interface Definitions
+
+```tsx
+// Spring physics configuration
+interface SpringConfig {
+  stiffness?: number    // Spring stiffness (default: 100)
+  damping?: number      // Spring damping (default: 10) 
+  mass?: number         // Mass of the spring (default: 1)
+  velocity?: number     // Initial velocity (default: 0)
+}
+
+// Animation configuration for advanced usage
+interface AnimationConfig {
+  duration?: number     // Animation duration in seconds (default: 0.6)
+  delay?: number        // Animation delay in seconds (default: 0)
+  preset?: SpringPreset // Spring animation preset
+  spring?: SpringConfig // Custom spring configuration
+  distance?: number     // Distance for slide animations (default: 50px)
+  scale?: number        // Scale factor for scale animations (default: 0.8)
+  blur?: number         // Blur amount for blur effects (default: 10px)
+  rotate?: number       // Rotation angle for rotate effects (default: 10deg)
+}
+
+// Base props for all Mochi Motion components
+interface MochiMotionProps {
+  children: React.ReactNode  // Content to animate
+  className?: string        // Additional CSS classes
+}
+
+// RevealOnScroll component props (extends AnimationConfig)
+interface RevealOnScrollProps extends AnimationConfig, MochiMotionProps {
+  // Animation & Effects
+  effect?: AnimationEffect           // default: 'fade-up'
+  
+  // Intersection Observer Configuration  
+  threshold?: number                // 0-1 visibility ratio (default: 0.1)
+  rootMargin?: string              // CSS margin string (default: '0px')
+  triggerOnce?: boolean            // Animate only once (default: true)
+  
+  // Control
+  disabled?: boolean               // Disable animation (default: false)
+  
+  // Styling
+  style?: React.CSSProperties      // Inline styles
+}
+```
+
+### Page Transition Props
+
+```tsx
+interface PageTransitionProps {
+  children: React.ReactNode
+  className?: string
+  preset?: SpringPreset
+  spring?: SpringConfig
+}
+
+interface AppRouterTransitionProps extends PageTransitionProps {
+  // Same props as PageTransition
+}
+
+interface ReactTransitionProps extends PageTransitionProps {
+  // Same props as PageTransition  
+}
+```
+
+### Spring Presets Type Definitions
+
+```tsx
+// Exported preset configurations
+export const SPRING_PRESETS: Record<SpringPreset, SpringConfig> = {
+  gentle: { stiffness: 80, damping: 20, mass: 1 },
+  wobbly: { stiffness: 120, damping: 8, mass: 1.2 },
+  stiff: { stiffness: 300, damping: 30, mass: 0.8 },
+  slow: { stiffness: 60, damping: 25, mass: 1.5 },
+  custom: { stiffness: 100, damping: 20, mass: 1 }
+}
+```
+
+### Advanced Type Usage Examples
+
+```tsx
+import { 
+  RevealOnScroll, 
+  SpringConfig,
+  AnimationEffect,
+  SPRING_PRESETS 
+} from 'mochi-motion'
+
+// Custom spring with full type safety
+const customSpring: SpringConfig = {
+  stiffness: 200,  // ✅ Type checked
+  damping: 15,     // ✅ IntelliSense works  
+  mass: 1.1        // ✅ Auto-completion
+}
+
+// Typed animation effects
+const effects: AnimationEffect[] = [
+  'fade-up',     // ✅ All effects available
+  'scale-up',    // ✅ in autocomplete
+  'blur-up',     // ✅ 
+  'rotate-up'    // ✅
+]
+
+// Component with full prop typing
+function EpicCard({ title, delay }: { title: string, delay: number }) {
+  return (
+    <RevealOnScroll
+      effect="scale-up"        // ✅ Typed union
+      preset="wobbly"          // ✅ Preset validation  
+      spring={customSpring}    // ✅ SpringConfig interface
+      delay={delay}            // ✅ number type
+      distance={60}            // ✅ Pixel distance
+      threshold={0.2}          // ✅ 0-1 range hint
+      className="epic-card"    // ✅ Optional string
+    >
+      <h3>{title}</h3>
+    </RevealOnScroll>
+  )
+}
+```
+
+### Generic Component Typing
+
+```tsx
+// For wrapper components with children
+interface MyComponentProps {
+  title: string
+  variant?: 'primary' | 'secondary'
+  children: React.ReactNode
+}
+
+function MyComponent({ title, variant = 'primary', children }: MyComponentProps) {
+  return (
+    <RevealOnScroll 
+      effect={variant === 'primary' ? 'fade-up' : 'scale-up'}
+      preset="gentle"
+    >
+      <div className={`card card--${variant}`}>
+        <h2>{title}</h2>
+        {children}
+      </div>
+    </RevealOnScroll>
+  )
+}
+```
+
+### Error Prevention with Types
+
+```tsx
+// ❌ TypeScript will catch these errors:
 <RevealOnScroll 
-  effect="fade-up"    // ✅ Autocomplete works
-  delay={0.5}         // ✅ Number type enforced
+  effect="invalid-effect"     // ❌ Type error
+  preset="wrong-preset"       // ❌ Type error  
+  delay="not-a-number"        // ❌ Type error
+  spring={{ wrong: 'config' }} // ❌ Type error
+/>
+
+// ✅ Correct usage with full type safety:
+<RevealOnScroll
+  effect="fade-up"            // ✅ Valid effect
+  preset="wobbly"             // ✅ Valid preset
+  delay={0.3}                 // ✅ Correct type
+  spring={{ 
+    stiffness: 150,           // ✅ Valid spring config
+    damping: 12, 
+    mass: 1.1 
+  }}
 >
-  <div>Content</div>
+  <div>Perfect type safety!</div>
 </RevealOnScroll>
 ```
+
+### IDE Benefits
+
+- **🎯 IntelliSense**: Complete autocomplete for all props and values
+- **🔍 Hover Info**: JSDoc descriptions for every prop
+- **⚠️ Error Detection**: Catch mistakes before runtime  
+- **🔄 Refactoring**: Safe renames across your entire codebase
+- **📖 Documentation**: Inline prop documentation in your IDE
 
 ## Requirements
 
